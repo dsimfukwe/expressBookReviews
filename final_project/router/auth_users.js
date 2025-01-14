@@ -70,7 +70,7 @@ module.exports.users = users;
 
 
 // Login endpoint
-app.post("/login", (req, res) => {
+regd_users.post("/login", (req, res) => {
   const username = req.body.username;
   const password = req.body.password;
 
