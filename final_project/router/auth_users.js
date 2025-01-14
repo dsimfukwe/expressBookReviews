@@ -65,7 +65,7 @@ regd_users.put("/auth/review/:isbn", (req, res) => {
   let review_message = req.query.comment;
 
   books[isbn]["reviews"][user] = review_message;
-
+  return res.status(200).send("Review added");
 
 });
 
@@ -73,18 +73,11 @@ regd_users.put("/auth/review/:isbn", (req, res) => {
 regd_users.delete("/auth/review/:isbn", (req, res) => {
   const isbn = req.params.isbn;
   let user = req.body.username;
-  let review_message = req.query.comment;
 
   delete books[isbn]["reviews"][user];
+  return res.status(200).send("Review deleted");
 
 
-});
-
-Object.keys(books).forEach(key => {
-  if (books[key]["author"] === author){
-      booksBy = {...booksBy,[key]: books[key]};
-
-  };
 });
 
 module.exports.authenticated = regd_users;
