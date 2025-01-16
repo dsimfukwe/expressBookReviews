@@ -62,4 +62,25 @@ public_users.get('/review/:isbn',function (req, res) {
     return res.send(JSON.stringify(books[isbn]["reviews"],null,4));
 });
 
+// Get list of all books in the store
+const axios = require('axios');
+public_users.get('/list',function (req, res) {
+  async function getData() {
+    try {
+      // Await the response from the Axios POST request
+      let response = await axios.get('/');
+  
+      // Log the response data to the console
+      console.log(response.data); 
+    } catch (error) {
+      // If there is an error, log the error message to the console
+      console.error('Error posting data:', error); 
+    }
+  }
+  
+  // Call the async function to execute the request
+  getData();
+
+});
+
 module.exports.general = public_users;
